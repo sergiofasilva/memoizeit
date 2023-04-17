@@ -1,0 +1,27 @@
+{
+  "name": "memoizeit",
+  "version": "0.0.1",
+  "description": "Module for functions memoization.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergiofasilva/memoizeit.git"
+  },
+  "keywords": [
+    "memoization",
+    "functions",
+    "cache",
+    "memoize",
+    "caching",
+    "performance"
+  ],
+  "author": "Sérgio Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sergiofasilva/memoizeit/issues"
+  },
+  "homepage": "https://github.com/sergiofasilva/memoizeit#readme"
+}
