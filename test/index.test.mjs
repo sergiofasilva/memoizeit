@@ -17,12 +17,8 @@ describe("memoizeIt", () => {
   });
 
   it("It should return a function.", () => {
-    function sum(a, b) {
-      return a + b;
-    }
-
-    const memoSum = memoizeIt(sum);
-    assert.deepEqual(typeof memoSum, 'function');
+    const memoFoo = memoizeIt(Function());
+    assert.deepEqual(typeof memoFoo, 'function');
   });
 
   it("Should return the memoized result for a function", () => {
@@ -77,7 +73,50 @@ describe("memoizeIt", () => {
     const result1 = await memoDelayedSum(1, 2);
     assert.strictEqual(result1, 3);
 
-    const result2 = await memoDelayedSum(1, 2);
-    assert.strictEqual(result2, 3);
+    const result2 = await memoDelayedSum(3, 2);
+    assert.strictEqual(result2, 5);
+
+    const result3 = await memoDelayedSum(1, 2);
+    assert.strictEqual(result3, 3);
+  });
+
+  it("Should return reference when result is an object", () => {
+    function getObject(arg1, arg2){
+      return {"a": arg1, "b": arg2};
+    }
+
+    const memoGetObject = memoizeIt(getObject);
+    const resultObject1 = memoGetObject("x", "y");
+    assert.deepStrictEqual(resultObject1, {"a": "x", "b": "y"});
+
+    const resultObject2 = memoGetObject("x", "y");
+    assert.deepStrictEqual(resultObject2, {"a": "x", "b": "y"});
+
+    resultObject2.c = "z";
+    const resultObject3 = memoGetObject("x", "y");
+    assert.notDeepStrictEqual(resultObject3, {"a": "x", "b": "y"});
+    assert.deepStrictEqual(resultObject3, {"a": "x", "b": "y", "c": "z"});
+    assert.deepStrictEqual(resultObject1, resultObject2);
+    assert.deepStrictEqual(resultObject1, resultObject3);
+  });
+
+  it("Should return reference when result is an array", () => {
+    function getArray(arg1, arg2){
+      return [arg1, arg2];
+    }
+
+    const memoGetArray = memoizeIt(getArray);
+    const resultArray1 = memoGetArray("x", "y");
+    assert.deepStrictEqual(resultArray1, ["x", "y"]);
+
+    const resultArray2 = memoGetArray("x", "y");
+    assert.deepStrictEqual(resultArray2, ["x", "y"]);
+
+    resultArray2.push("z");
+    const resultArray3 = memoGetArray("x", "y");
+    assert.notDeepStrictEqual(resultArray3, ["x", "y"]);
+    assert.deepStrictEqual(resultArray3, ["x", "y", "z"]);
+    assert.deepStrictEqual(resultArray1, resultArray2);
+    assert.deepStrictEqual(resultArray1, resultArray3);
   });
 });
