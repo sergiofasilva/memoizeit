@@ -10,18 +10,18 @@ function getSumBetween(start, end) {
 }
 
 async function init(){
-  // memoization of the memoization function
+  // memoization of the getSumBetween function
   const memoizedGetSum = memoizeit(getSumBetween);
 
   // using the memoized function
   console.time("First time");
-  console.log('First calculation:', await memoizedGetSum(1, 3000000000));  // first call (no cached value)
+  console.log('First calculation:', memoizedGetSum(1, 3000000000));  // first call (no cached value)
   console.timeEnd("First time");
   console.log();
   console.log(' #################### ');
   console.log();
   console.time("Second time");
-  console.log('Second calculation:', await memoizedGetSum(1, 3000000000)); // second call (cache usage)
+  console.log('Second calculation:', memoizedGetSum(1, 3000000000)); // second call (cache usage)
   console.timeEnd("Second time");
 }
 
