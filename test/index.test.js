@@ -1,7 +1,7 @@
 'use strict';
 import { describe, it, before, mock } from 'node:test';
 import assert from 'node:assert/strict';
-import memoizeIt from "../index.mjs";
+import memoizeIt from "../index.js";
 
 describe("memoizeIt", () => {
   it("It should return an error when no parameter is passed to it.", () => {
