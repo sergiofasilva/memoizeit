@@ -20,7 +20,8 @@
     "cache",
     "memoize",
     "caching",
-    "performance"
+    "performance",
+    "memcached"
   ],
   "author": "Sérgio Silva <sergiofasilva@gmail.com>",
   "license": "MIT",
