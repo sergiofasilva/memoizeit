@@ -21,7 +21,7 @@ describe("memoizeIt", () => {
     assert.deepEqual(typeof memoFoo, 'function');
   });
 
-  it("Should return the memoized result for a function", () => {
+  it("Should return the memoized result for a function.", () => {
     function sum(a, b) {
       return a + b;
     }
@@ -32,7 +32,7 @@ describe("memoizeIt", () => {
     assert.strictEqual(memoSum(1, 2), 3);
   });
 
-  it("Should return the cached result when it cached", (ctx) => {
+  it("Should return the cached result when it cached.", (ctx) => {
     function sum(a, b) {
       return a + b;
     }
@@ -50,7 +50,7 @@ describe("memoizeIt", () => {
     assert.strictEqual(sum.apply.mock.calls.length, 2); // get from cache
   });
 
-  it("Should handle different argument types correctly", () => {
+  it("Should handle different argument types correctly.", () => {
     function concat(a, b) {
       return `${a}${b}`;
     }
@@ -61,7 +61,7 @@ describe("memoizeIt", () => {
     assert.strictEqual(memoConcat(true, null), "truenull");
   });
 
-  it("Should handle promises correctly", async () => {
+  it("Should handle promises correctly.", async () => {
     async function delayedSum(a, b) {
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -80,7 +80,7 @@ describe("memoizeIt", () => {
     assert.strictEqual(result3, 3);
   });
 
-  it("Should return reference when result is an object", () => {
+  it("Should return reference when result is an object.", () => {
     function getObject(arg1, arg2){
       return {"a": arg1, "b": arg2};
     }
@@ -100,7 +100,7 @@ describe("memoizeIt", () => {
     assert.deepStrictEqual(resultObject1, resultObject3);
   });
 
-  it("Should return reference when result is an array", () => {
+  it("Should return reference when result is an array.", () => {
     function getArray(arg1, arg2){
       return [arg1, arg2];
     }
