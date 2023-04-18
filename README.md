@@ -22,7 +22,7 @@ More about **pure functions** here: [https://en.wikipedia.org/wiki/Pure_function
 ## Installation
 
 ```bash
-npm i memoizee
+npm i memoizeit
 ```
 
 ## Usage
