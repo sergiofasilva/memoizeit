@@ -1,5 +1,5 @@
 'use strict';
-import { describe, it, before, mock } from 'node:test';
+import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import memoizeIt from "../index.js";
 
