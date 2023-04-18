@@ -25,6 +25,7 @@ describe("memoizeIt", () => {
     function sum(a, b) {
       return a + b;
     }
+
     const memoSum = memoizeIt(sum);
 
     assert.strictEqual(memoSum(1, 2), 3);
