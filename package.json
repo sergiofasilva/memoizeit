@@ -29,7 +29,7 @@
     "url": "https://github.com/sergiofasilva/memoizeit/issues"
   },
   "homepage": "https://github.com/sergiofasilva/memoizeit#readme",
-  "dependencies": {
+  "devDependencies": {
     "memoizeit": "*"
   }
 }
