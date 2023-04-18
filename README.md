@@ -2,23 +2,24 @@
 
 **MemoizeIt is a node.js module for functions memoization.**
 
-**Memoisation** is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+---
+
+>**Memoisation** is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
 
 More about **memoization** here: [https://en.wikipedia.org/wiki/Memoization](https://en.wikipedia.org/wiki/Memoization)
 
+---
 
 **Should only be used with pure functions.**
 
-A pure function is a function that has the following properties:
-
-1. the function return values are identical for identical arguments (no variation with local static variables, non-local variables, mutable reference arguments or input streams), and
-2. the function has no side effects (no mutation of local static variables, non-local variables, mutable reference arguments or input/output streams).
+>A pure function is a function that has the following properties:
+>
+>1. the function return values are identical for identical arguments (no variation with local static variables, non-local variables, mutable reference arguments or input streams), and
+>2. the function has no side effects (no mutation of local static variables, non-local variables, mutable reference arguments or input/output streams).
 
 More about **pure functions** here: [https://en.wikipedia.org/wiki/Pure_function](https://en.wikipedia.org/wiki/Pure_function)
 
 ## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash
 npm i memoizee
