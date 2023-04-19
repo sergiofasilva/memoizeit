@@ -10,7 +10,7 @@ async function promiseIncrementeOne(ms, value) {
 }
 
 async function init() {
-  // memoization of the memoization of the promised function
+  // memoization of the promised function
   const memoizedPromise = memoizeit(promiseIncrementeOne);
 
   // using the memoized function
