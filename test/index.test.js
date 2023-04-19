@@ -1,27 +1,27 @@
 'use strict';
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import memoizeIt from "../index.js";
+import memoizeIt from '../index.js';
 
-describe("memoizeIt", () => {
-  it("It should return an error when no parameter is passed to it.", () => {
+describe('memoizeIt', () => {
+  it('It should return an error when no parameter is passed to it.', () => {
     assert.throws(() => {
       memoizeIt();
     }, Error);
   });
 
-  it("It should return an error when the parameter passed in is not a function.", () => {
+  it('It should return an error when the parameter passed in is not a function.', () => {
     assert.throws(() => {
-      memoizeIt("string");
+      memoizeIt('string');
     }, Error);
   });
 
-  it("It should return a function.", () => {
-    const memoFoo = memoizeIt(Function());
+  it('It should return a function.', () => {
+    const memoFoo = memoizeIt(Function);
     assert.deepEqual(typeof memoFoo, 'function');
   });
 
-  it("Should return the memoized result for a function.", () => {
+  it('Should return the memoized result for a function.', () => {
     function sum(a, b) {
       return a + b;
     }
@@ -33,7 +33,7 @@ describe("memoizeIt", () => {
     assert.strictEqual(memoSum(1, 2), 3);
   });
 
-  it("Should return the cached result when it cached.", (ctx) => {
+  it('Should return the cached result when it cached.', (ctx) => {
     function sum(a, b) {
       return a + b;
     }
@@ -51,18 +51,18 @@ describe("memoizeIt", () => {
     assert.strictEqual(sum.apply.mock.calls.length, 2); // get from cache
   });
 
-  it("Should handle different argument types correctly.", () => {
+  it('Should handle different argument types correctly.', () => {
     function concat(a, b) {
       return `${a}${b}`;
     }
     const memoConcat = memoizeIt(concat);
 
-    assert.strictEqual(memoConcat("a", "b"), "ab");
-    assert.strictEqual(memoConcat(1, 2), "12");
-    assert.strictEqual(memoConcat(true, null), "truenull");
+    assert.strictEqual(memoConcat('a', 'b'), 'ab');
+    assert.strictEqual(memoConcat(1, 2), '12');
+    assert.strictEqual(memoConcat(true, null), 'truenull');
   });
 
-  it("Should handle promises correctly.", async () => {
+  it('Should handle promises correctly.', async () => {
     async function delayedSum(a, b) {
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -81,42 +81,42 @@ describe("memoizeIt", () => {
     assert.strictEqual(result3, 3);
   });
 
-  it("Should return reference when result is an object.", () => {
-    function getObject(arg1, arg2){
-      return {"a": arg1, "b": arg2};
+  it('Should return reference when result is an object.', () => {
+    function getObject(arg1, arg2) {
+      return { a: arg1, b: arg2 };
     }
 
     const memoGetObject = memoizeIt(getObject);
-    const resultObject1 = memoGetObject("x", "y");
-    assert.deepStrictEqual(resultObject1, {"a": "x", "b": "y"});
+    const resultObject1 = memoGetObject('x', 'y');
+    assert.deepStrictEqual(resultObject1, { a: 'x', b: 'y' });
 
-    const resultObject2 = memoGetObject("x", "y");
-    assert.deepStrictEqual(resultObject2, {"a": "x", "b": "y"});
+    const resultObject2 = memoGetObject('x', 'y');
+    assert.deepStrictEqual(resultObject2, { a: 'x', b: 'y' });
 
-    resultObject2.c = "z";
-    const resultObject3 = memoGetObject("x", "y");
-    assert.notDeepStrictEqual(resultObject3, {"a": "x", "b": "y"});
-    assert.deepStrictEqual(resultObject3, {"a": "x", "b": "y", "c": "z"});
+    resultObject2.c = 'z';
+    const resultObject3 = memoGetObject('x', 'y');
+    assert.notDeepStrictEqual(resultObject3, { a: 'x', b: 'y' });
+    assert.deepStrictEqual(resultObject3, { a: 'x', b: 'y', c: 'z' });
     assert.deepStrictEqual(resultObject1, resultObject2);
     assert.deepStrictEqual(resultObject1, resultObject3);
   });
 
-  it("Should return reference when result is an array.", () => {
-    function getArray(arg1, arg2){
+  it('Should return reference when result is an array.', () => {
+    function getArray(arg1, arg2) {
       return [arg1, arg2];
     }
 
     const memoGetArray = memoizeIt(getArray);
-    const resultArray1 = memoGetArray("x", "y");
-    assert.deepStrictEqual(resultArray1, ["x", "y"]);
+    const resultArray1 = memoGetArray('x', 'y');
+    assert.deepStrictEqual(resultArray1, ['x', 'y']);
 
-    const resultArray2 = memoGetArray("x", "y");
-    assert.deepStrictEqual(resultArray2, ["x", "y"]);
+    const resultArray2 = memoGetArray('x', 'y');
+    assert.deepStrictEqual(resultArray2, ['x', 'y']);
 
-    resultArray2.push("z");
-    const resultArray3 = memoGetArray("x", "y");
-    assert.notDeepStrictEqual(resultArray3, ["x", "y"]);
-    assert.deepStrictEqual(resultArray3, ["x", "y", "z"]);
+    resultArray2.push('z');
+    const resultArray3 = memoGetArray('x', 'y');
+    assert.notDeepStrictEqual(resultArray3, ['x', 'y']);
+    assert.deepStrictEqual(resultArray3, ['x', 'y', 'z']);
     assert.deepStrictEqual(resultArray1, resultArray2);
     assert.deepStrictEqual(resultArray1, resultArray3);
   });
