@@ -1,23 +1,23 @@
 'use strict';
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import memoizeIt from '../index.js';
+import memoizeit from '../index.js';
 
 describe('memoizeIt', () => {
   it('It should return an error when no parameter is passed to it.', () => {
     assert.throws(() => {
-      memoizeIt();
+      memoizeit();
     }, Error);
   });
 
   it('It should return an error when the parameter passed in is not a function.', () => {
     assert.throws(() => {
-      memoizeIt('string');
+      memoizeit('string');
     }, Error);
   });
 
   it('It should return a function.', () => {
-    const memoFoo = memoizeIt(Function);
+    const memoFoo = memoizeit(Function);
     assert.deepEqual(typeof memoFoo, 'function');
   });
 
@@ -26,7 +26,7 @@ describe('memoizeIt', () => {
       return a + b;
     }
 
-    const memoSum = memoizeIt(sum);
+    const memoSum = memoizeit(sum);
 
     assert.strictEqual(memoSum(1, 2), 3);
     assert.strictEqual(memoSum(2, 3), 5);
@@ -38,7 +38,7 @@ describe('memoizeIt', () => {
       return a + b;
     }
 
-    const memoSum = memoizeIt(sum);
+    const memoSum = memoizeit(sum);
 
     ctx.mock.method(sum, 'apply');
     assert.strictEqual(memoSum(1, 2), 3);
@@ -55,7 +55,7 @@ describe('memoizeIt', () => {
     function concat(a, b) {
       return `${a}${b}`;
     }
-    const memoConcat = memoizeIt(concat);
+    const memoConcat = memoizeit(concat);
 
     assert.strictEqual(memoConcat('a', 'b'), 'ab');
     assert.strictEqual(memoConcat(1, 2), '12');
@@ -70,7 +70,7 @@ describe('memoizeIt', () => {
         }, 100);
       });
     }
-    const memoDelayedSum = memoizeIt(delayedSum);
+    const memoDelayedSum = memoizeit(delayedSum);
     const result1 = await memoDelayedSum(1, 2);
     assert.strictEqual(result1, 3);
 
@@ -86,7 +86,7 @@ describe('memoizeIt', () => {
       return { a: arg1, b: arg2 };
     }
 
-    const memoGetObject = memoizeIt(getObject);
+    const memoGetObject = memoizeit(getObject);
     const resultObject1 = memoGetObject('x', 'y');
     assert.deepStrictEqual(resultObject1, { a: 'x', b: 'y' });
 
@@ -106,7 +106,7 @@ describe('memoizeIt', () => {
       return [arg1, arg2];
     }
 
-    const memoGetArray = memoizeIt(getArray);
+    const memoGetArray = memoizeit(getArray);
     const resultArray1 = memoGetArray('x', 'y');
     assert.deepStrictEqual(resultArray1, ['x', 'y']);
 
