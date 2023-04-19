@@ -17,10 +17,10 @@ const memoizedFibonacci = memoizeit(fibonacciWithMemoizeIt);
 
 // using the memoized function
 console.time("memoizedit time");
-console.log('Memoized calculation:', memoizedFibonacci(45)); // primeira chamada (cálculo) 
+console.log('Memoized calculation:', memoizedFibonacci(45)); 
 console.timeEnd("memoizedit time");
 
 //use of the non-memoized function
 console.time("not memoizedit time");
-console.log('Not memoized calculation:', fibonacciWithoutMemoizeIt(45)); // segunda chamada (uso do cache)
+console.log('Not memoized calculation:', fibonacciWithoutMemoizeIt(45));
 console.timeEnd("not memoizedit time");
