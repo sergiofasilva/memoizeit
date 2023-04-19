@@ -47,7 +47,7 @@ console.log(result1); // prints 3
 ```
 
 
-## Autores
+## Authors
 
 - [@sergiofasilva](https://github.com/sergiofasilva)
 
