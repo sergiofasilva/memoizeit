@@ -15,6 +15,4 @@ npm-debug.log
 .code-workspace
 .env
 ecosystem.*
-.prettierrc
-.eslintrc
 local.*
