@@ -1,8 +1,10 @@
 # MemoizeIt
 
-**MemoizeIt** is a node.js module for functions memoization.
+&nbsp;
 
----
+**MemoizeIt** is a powerful JavaScript library that allows you to improve the performance of expensive functions. By "memorizing" the output of a function for specific input values. **MemoizeIt** is able to return the memorized output immediately when called with the same arguments, instead of having to calculate the result again.
+
+&nbsp;
 
 > **Memoisation** is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
 
@@ -10,26 +12,39 @@ More about **memoization** here: [https://en.wikipedia.org/wiki/Memoization](htt
 
 ---
 
-**This module should only be used with pure functions**
+&nbsp;
 
-> A pure function is a function that has the following properties:
->
+**Note:** ***This module should only be used with pure functions***
+
+A pure function is a function that has the following properties:
+
 > 1.  the function return values are identical for identical arguments (no variation with local static variables, non-local variables, mutable reference arguments or input streams), and
 > 2.  the function has no side effects (no mutation of local static variables, non-local variables, mutable reference arguments or input/output streams).
 
 More about **pure functions** here: [https://en.wikipedia.org/wiki/Pure_function](https://en.wikipedia.org/wiki/Pure_function)
 
+&nbsp;
+
 ## Installation
+
+To use **MemoizeIt**, simply install it via npm:
 
 ```bash
 npm i memoizeit
 ```
+&nbsp;
 
 ## Usage
 
+Then import it into your code and use it:
+
 ```javascript
 import memoizeit from 'memoizeit';
+```
+&nbsp;
 
+To benefit from **MemoizeIt** performance improvements, simply pass the function to be memoized as an input parameter:
+```javascript
 // function to be memoized
 function sum(a, b) {
   return a + b;
@@ -37,7 +52,11 @@ function sum(a, b) {
 
 // memoization of the sum function
 const memoSum = memoizeit(sum);
+```
+&nbsp;
 
+Memoized functions can then be called as normal, with the added bonus of improved performance for repeated calls with the same arguments:
+```javascript
 // using the memoized function
 const result1 = memoSum(1, 2); // first call (no cached value)
 console.log(result1); // prints 3
@@ -45,8 +64,9 @@ console.log(result1); // prints 3
 const result2 = memoSum(1, 2); // second call (cache usage)
 console.log(result2); // prints 3
 ```
+&nbsp;
 
-## Promises
+## Promises are supported
 
 Functions that return promises are supported.
 
@@ -69,17 +89,18 @@ async function init() {
   // using the memoized function
   console.time('First time');
   console.log('First call calculation:', await memoizedPromise(3000, 4)); // first call (no cached value)
-  console.timeEnd('First time');
+  console.timeEnd('First time'); // First time: 3.012s
   console.log();
   console.log(' #################### ');
   console.log();
   console.time('second time');
   console.log('Second call calculation:', await memoizedPromise(3000, 4)); // second call (cache usage)
-  console.timeEnd('second time');
+  console.timeEnd('second time'); // second time: 0.078ms
 }
 
 init();
 ```
+&nbsp;
 
 ## Functions that return objects (including arrays)
 
@@ -101,9 +122,14 @@ const resultObject2 = memoGetObject('x', 'y');
 console.log(resultObject); // { a: 'x', b: 'y', c: 'z' }
 ```
 
+&nbsp;
+
 ## Some examples
 
 ### Fibonacci
+Here's an example of how to use **MemoizeIt** to improve the performance of an expensive function that calculates Fibonacci numbers recursively:
+
+
 
 ```javascript
 import memoizeit from 'memoizeit';
@@ -134,9 +160,14 @@ console.log('Not memoized calculation:', fibonacciWithoutMemoizeIt(45)); // Not 
 console.timeEnd('not memoizedit time'); // not memoizedit time: 17.834s
 ```
 
+&nbsp;
+
 ## Authors
 
 - [@sergiofasilva](https://github.com/sergiofasilva)
+
+
+&nbsp;
 
 ## License
 
