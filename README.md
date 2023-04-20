@@ -127,6 +127,17 @@ console.log(resultObject); // { a: 'x', b: 'y', c: 'z' }
 ## Some examples
 
 ### Fibonacci
+
+The calculation of a high number in the fibonacci sequence requires a lot of computation as it is necessary to recursively calculate the fibonacci value of smaller numbers. 
+
+
+![Image](https://raw.githubusercontent.com/sergiofasilva/memoizeit/main/media/images/fib7.png)
+
+As we see in the image to calculate the fibonacci value for the number 7, we need to calculate the fibonacci value several times from other lower numbers. The fibonacci for the number 2 is calculated 8 times. 
+By using memoization we only have to do the calculation once and save the result to be used immediately in the next calculation, saving a lot of time and computing resources.
+
+&nbsp;
+
 Here's an example of how to use **MemoizeIt** to improve the performance of an expensive function that calculates Fibonacci numbers recursively:
 
 
