@@ -2,7 +2,7 @@
 
 &nbsp;
 
-**MemoizeIt** is a powerful JavaScript library that allows you to improve the performance of expensive functions. By "memorizing" the output of a function for specific input values. **MemoizeIt** is able to return the memorized output immediately when called with the same arguments, instead of having to calculate the result again.
+**MemoizeIt** is a powerful JavaScript package that allows you to improve the performance of expensive functions. By "memorizing" the output of a function for specific input values. **MemoizeIt** is able to return the memorized output immediately when called with the same arguments, instead of having to calculate the result again.
 
 &nbsp;
 
