@@ -1,7 +1,7 @@
 import memoizeit from 'memoizeit';
 
 // function to be memoized
-async function promiseIncrementeOne(ms, value) {
+async function promiseIncrementOne(ms, value) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(Number(value) + 1);
@@ -11,7 +11,7 @@ async function promiseIncrementeOne(ms, value) {
 
 async function init() {
   // memoization of the promised function
-  const memoizedPromise = memoizeit(promiseIncrementeOne);
+  const memoizedPromise = memoizeit(promiseIncrementOne);
 
   // using the memoized function
   console.time('First time');
