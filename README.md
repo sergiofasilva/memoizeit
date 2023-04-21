@@ -14,7 +14,7 @@ More about **memoization** here: [https://en.wikipedia.org/wiki/Memoization](htt
 
 &nbsp;
 
-**Note:** ***This module should only be used with pure functions***
+**Note:** **_This module should only be used with pure functions_**
 
 A pure function is a function that has the following properties:
 
@@ -27,11 +27,19 @@ More about **pure functions** here: [https://en.wikipedia.org/wiki/Pure_function
 
 ## Installation
 
-To use **MemoizeIt**, simply install it via npm:
+To use **MemoizeIt**, simply install it via **npm**:
 
 ```bash
 npm i memoizeit
 ```
+
+&nbsp;
+... or via **yarn**:
+
+```bash
+yarn add memoizeit
+```
+
 &nbsp;
 
 ## Usage
@@ -41,9 +49,11 @@ Then import it into your code and use it:
 ```javascript
 import memoizeit from 'memoizeit';
 ```
+
 &nbsp;
 
 To benefit from **MemoizeIt** performance improvements, simply pass the function to be memoized as an input parameter:
+
 ```javascript
 // function to be memoized
 function sum(a, b) {
@@ -53,9 +63,11 @@ function sum(a, b) {
 // memoization of the sum function
 const memoSum = memoizeit(sum);
 ```
+
 &nbsp;
 
 Memoized functions can then be called as normal, with the added bonus of improved performance for repeated calls with the same arguments:
+
 ```javascript
 // using the memoized function
 const result1 = memoSum(1, 2); // first call (no cached value)
@@ -64,6 +76,7 @@ console.log(result1); // prints 3
 const result2 = memoSum(1, 2); // second call (cache usage)
 console.log(result2); // prints 3
 ```
+
 &nbsp;
 
 ## Promises are supported
@@ -100,6 +113,7 @@ async function init() {
 
 init();
 ```
+
 &nbsp;
 
 ## Functions that return objects (including arrays)
@@ -128,19 +142,16 @@ console.log(resultObject); // { a: 'x', b: 'y', c: 'z' }
 
 ### Fibonacci
 
-The calculation of a high number in the fibonacci sequence requires a lot of computation as it is necessary to recursively calculate the fibonacci value of smaller numbers. 
-
+The calculation of a high number in the fibonacci sequence requires a lot of computation as it is necessary to recursively calculate the fibonacci value of smaller numbers.
 
 ![Image](https://raw.githubusercontent.com/sergiofasilva/memoizeit/main/media/images/fib7.png)
 
-As we see in the image to calculate the fibonacci value for the number 7, we need to calculate the fibonacci value several times from other lower numbers. The fibonacci for the number 2 is calculated 8 times. 
+As we see in the image to calculate the fibonacci value for the number 7, we need to calculate the fibonacci value several times from other lower numbers. The fibonacci for the number 2 is calculated 8 times.
 By using memoization we only have to do the calculation once and save the result to be used immediately in the next calculation, saving a lot of time and computing resources.
 
 &nbsp;
 
 Here's an example of how to use **MemoizeIt** to improve the performance of an expensive function that calculates Fibonacci numbers recursively:
-
-
 
 ```javascript
 import memoizeit from 'memoizeit';
@@ -176,7 +187,6 @@ console.timeEnd('not memoizedit time'); // not memoizedit time: 17.834s
 ## Authors
 
 - [@sergiofasilva](https://github.com/sergiofasilva)
-
 
 &nbsp;
 
