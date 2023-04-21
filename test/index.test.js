@@ -34,21 +34,20 @@ describe('memoizeIt', () => {
   });
 
   it('Should return the cached result when it cached.', (ctx) => {
-    function sum(a, b) {
+    const sum = ctx.mock.fn((a, b) => {
       return a + b;
-    }
+    });
 
     const memoSum = memoizeit(sum);
 
-    ctx.mock.method(sum, 'apply');
     assert.strictEqual(memoSum(1, 2), 3);
-    assert.strictEqual(sum.apply.mock.calls.length, 1); // addt o cache
+    assert.strictEqual(sum.mock.calls.length, 1); // addt o cache
     assert.strictEqual(memoSum(2, 3), 5);
-    assert.strictEqual(sum.apply.mock.calls.length, 2); // add to cache
+    assert.strictEqual(sum.mock.calls.length, 2); // add to cache
     assert.strictEqual(memoSum(1, 2), 3);
-    assert.strictEqual(sum.apply.mock.calls.length, 2); // get from cache
+    assert.strictEqual(sum.mock.calls.length, 2); // get from cache
     assert.strictEqual(memoSum(2, 3), 5);
-    assert.strictEqual(sum.apply.mock.calls.length, 2); // get from cache
+    assert.strictEqual(sum.mock.calls.length, 2); // get from cache
   });
 
   it('Should handle different argument types correctly.', () => {

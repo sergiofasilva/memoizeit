@@ -11,7 +11,7 @@ export default function memoizeit(func) {
     if (cache.has(key)) {
       return cache.get(key);
     }
-    const funcResult = func.apply(this, args);
+    const funcResult = func(...args);
 
     const isPromise =
       typeof funcResult === 'object' && typeof funcResult.then === 'function';
