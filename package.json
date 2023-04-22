@@ -1,6 +1,6 @@
 {
   "name": "memoizeit",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Module for functions memoization.",
   "main": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
