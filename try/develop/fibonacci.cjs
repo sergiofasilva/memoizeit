@@ -1,4 +1,4 @@
-import { memoizeit } from 'memoizeit-develop';
+const { memoizeit } = require('memoizeit-develop');
 
 // fibonacci function to be memoized
 function fibonacciWithMemoizeIt(n) {

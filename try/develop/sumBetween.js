@@ -1,4 +1,4 @@
-import memoizeit from 'memoizeit-develop';
+import { memoizeit } from 'memoizeit-develop';
 
 // function to be memoized
 function getSumBetween(start, end) {

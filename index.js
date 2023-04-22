@@ -1,6 +1,6 @@
 'use strict';
 
-function memoizeit(func) {
+export function memoizeit(func) {
   const cache = new Map();
   if (typeof func !== 'function') {
     throw new Error('The argument of momoizeIt must be a function.');
@@ -28,6 +28,3 @@ function memoizeit(func) {
   };
   return memoized;
 }
-
-export { memoizeit };
-export default memoizeit;
