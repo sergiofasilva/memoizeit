@@ -34,7 +34,7 @@ npm i memoizeit
 ```
 
 &nbsp;
-... or via **yarn**:
+... \*or via **yarn\***:
 
 ```bash
 yarn add memoizeit
@@ -48,6 +48,13 @@ Then import it into your code and use it:
 
 ```javascript
 import memoizeit from 'memoizeit';
+```
+
+&nbsp;
+... _or with require (CommonJS)_:
+
+```javascript
+const memoizeit = require('memoizeit').default;
 ```
 
 &nbsp;
