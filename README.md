@@ -34,7 +34,7 @@ npm i memoizeit
 ```
 
 &nbsp;
-... \*or via **yarn\***:
+... _or via **yarn**_:
 
 ```bash
 yarn add memoizeit
