@@ -2,13 +2,15 @@
   "name": "memoizeit",
   "version": "1.0.2",
   "description": "Module for functions memoization.",
-  "main": "index.js",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "type": "module",
   "scripts": {
     "test": "node --test",
     "push": "npm version patch && git push && npm publish",
     "push-minor": "npm version minor && git push && npm publish",
-    "push-major": "npm version major && git push && npm publish"
+    "push-major": "npm version major && git push && npm publish",
+    "build": "tsc --project tsconfig.esm.json & tsc --project tsconfig.cjs.json"
   },
   "repository": {
     "type": "git",
@@ -35,6 +37,12 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-promise": "^6.1.1",
-    "memoizeit": "*"
+    "memoizeit": "*",
+    "typescript": "^5.0.4"
+  },
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js",
+    "default": "./dist/esm/index.js"
   }
 }
