@@ -51,7 +51,7 @@ import memoizeit from 'memoizeit';
 ```
 
 &nbsp;
-... _or with require (CommonJS)_:
+... _or with **require** (CommonJS)_:
 
 ```javascript
 const memoizeit = require('memoizeit').default;
