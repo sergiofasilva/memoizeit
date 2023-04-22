@@ -4,7 +4,6 @@
   "description": "Module for functions memoization.",
   "main": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
-  "type": "module",
   "scripts": {
     "test": "node --test",
     "push": "npm version patch && git push && npm publish",
