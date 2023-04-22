@@ -1,5 +1,5 @@
 'use strict';
-export default function memoizeit(func) {
+export function memoizeit(func) {
     var cache = new Map();
     if (typeof func !== 'function') {
         throw new Error('The argument of momoizeIt must be a function.');
