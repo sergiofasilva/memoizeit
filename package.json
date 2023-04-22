@@ -38,6 +38,7 @@
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-promise": "^6.1.1",
     "memoizeit": "*",
+    "memoizeit-develop": "github:sergiofasilva/memoizeit#develop",
     "typescript": "^5.0.4"
   },
   "exports": {
