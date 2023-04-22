@@ -1,5 +1,6 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.memoizeit = void 0;
 function memoizeit(func) {
     var cache = new Map();
     if (typeof func !== 'function') {
@@ -27,5 +28,5 @@ function memoizeit(func) {
     };
     return memoized;
 }
-exports.default = memoizeit;
+exports.memoizeit = memoizeit;
 //# sourceMappingURL=index.js.map

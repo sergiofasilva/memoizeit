@@ -47,14 +47,14 @@ yarn add memoizeit
 Then import it into your code and use it:
 
 ```javascript
-import memoizeit from 'memoizeit';
+import { memoizeit } from 'memoizeit';
 ```
 
 &nbsp;
 ... _or with **require** (CommonJS)_:
 
 ```javascript
-const memoizeit = require('memoizeit').default;
+const memoizeit = require('memoizeit');
 ```
 
 &nbsp;

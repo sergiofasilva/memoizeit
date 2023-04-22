@@ -1,1 +1,1 @@
-export default function memoizeit(func: any): (...args: any[]) => any;
+export function memoizeit(func: any): (...args: any[]) => any;
