@@ -10,7 +10,7 @@
     "push": "npm version patch && git push && npm publish",
     "push-minor": "npm version minor && git push && npm publish",
     "push-major": "npm version major && git push && npm publish",
-    "build": "tsc --project tsconfig.esm.json & tsc --project tsconfig.cjs.json"
+    "build": "tsc --project tsconfig.esm.json & tsc --project tsconfig.cjs.json && mv ./dist/cjs/index.js ./dist/cjs/index.cjs"
   },
   "repository": {
     "type": "git",
