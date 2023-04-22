@@ -54,7 +54,7 @@ import { memoizeit } from 'memoizeit';
 ... _or with **require** (CommonJS)_:
 
 ```javascript
-const memoizeit = require('memoizeit');
+const { memoizeit } = require('memoizeit');
 ```
 
 &nbsp;
