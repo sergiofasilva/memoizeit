@@ -18,7 +18,7 @@ describe('memoizeIt', () => {
 
   it('It should return a function.', () => {
     const memoFoo = memoizeit(Function);
-    assert.deepEqual(typeof memoFoo, 'function');
+    assert.strictEqual(typeof memoFoo, 'function');
   });
 
   it('Should return the memoized result for a function.', () => {
