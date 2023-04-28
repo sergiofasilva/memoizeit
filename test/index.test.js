@@ -4,19 +4,19 @@ import assert from 'node:assert/strict';
 import memoizeit from '../index.js';
 
 describe('memoizeIt', () => {
-  it('It should return an error when no parameter is passed to it.', () => {
+  it('Should return an error when no parameter is passed to it.', () => {
     assert.throws(() => {
       memoizeit();
     }, Error);
   });
 
-  it('It should return an error when the parameter passed in is not a function.', () => {
+  it('Should return an error when the parameter passed in is not a function.', () => {
     assert.throws(() => {
       memoizeit('string');
     }, Error);
   });
 
-  it('It should return a function.', () => {
+  it('Should return a function.', () => {
     const memoFoo = memoizeit(Function);
     assert.strictEqual(typeof memoFoo, 'function');
   });
