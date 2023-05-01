@@ -1,5 +1,5 @@
 'use strict';
-export function memoizeit(func) {
+function memoizeit(func) {
     var cache = new Map();
     if (typeof func !== 'function') {
         throw new Error('The argument of momoizeIt must be a function.');
@@ -26,4 +26,5 @@ export function memoizeit(func) {
     };
     return memoized;
 }
+module.exports = memoizeit;
 //# sourceMappingURL=index.js.map
