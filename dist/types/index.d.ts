@@ -1,2 +1,2 @@
-export default memoizeit;
-export function memoizeit(func: any): (...args: any[]) => any;
+export = memoizeit;
+declare function memoizeit(func: any): (...args: any[]) => any;

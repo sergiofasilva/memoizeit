@@ -2,9 +2,9 @@
   "name": "memoizeit",
   "version": "1.0.12",
   "description": "Module for functions memoization.",
-  "main": "./dist/esm/index.js",
+  "main": "./index.js",
   "types": "./dist/types/index.d.ts",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "test": "node --test",
     "push": "npm version patch && git push && npm publish",
@@ -43,8 +43,8 @@
     "typescript": "^5.0.4"
   },
   "exports": {
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.cjs",
-    "default": "./dist/esm/index.js"
+    "import": "./index.mjs",
+    "require": "./index.js",
+    "default": "./index.js"
   }
 }

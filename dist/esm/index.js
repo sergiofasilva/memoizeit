@@ -26,6 +26,5 @@ function memoizeit(func) {
     };
     return memoized;
 }
-export default memoizeit;
-export { memoizeit };
+module.exports = memoizeit;
 //# sourceMappingURL=index.js.map
