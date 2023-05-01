@@ -30,7 +30,3 @@ function memoizeit(func) {
 }
 
 module.exports = memoizeit;
-
-module.exports = {
-  memoizeit,
-};

@@ -1,4 +1,4 @@
-const { memoizeit } = require('memoizeit-develop');
+const memoizeit = require('memoizeit-develop');
 
 // function to be memoized
 async function promiseIncrementOne(ms, value) {
