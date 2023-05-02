@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "description": "Module for functions memoization.",
   "main": "./index.js",
-  "types": "./index.d.ts",
+  "types": "./types/index.d.ts",
   "type": "commonjs",
   "scripts": {
     "test": "node --test",
