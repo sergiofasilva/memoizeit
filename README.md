@@ -2,6 +2,7 @@
 [![npm version](https://img.shields.io/npm/v/memoizeit)](https://www.npmjs.com/package/memoizeit)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/sergiofasilva/memoizeit/ci.yml)](https://github.com/sergiofasilva/memoizeit/actions)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://standardjs.com/)
+[![Known Vulnerabilities](https://snyk.io/test/github/sergiofasilva/memoizeit/badge.svg)](https://snyk.io/test/github/sergiofasilva/memoizeit)
 
 &nbsp;
 
