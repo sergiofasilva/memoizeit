@@ -1,4 +1,6 @@
 # MemoizeIt
+[![npm version](https://img.shields.io/npm/v/memoizeit)](https://www.npmjs.com/package/memoizeit)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/sergiofasilva/memoizeit/ci.yml)](https://github.com/sergiofasilva/memoizeit/actions)
 
 &nbsp;
 
