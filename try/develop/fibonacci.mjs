@@ -1,4 +1,4 @@
-import { memoizeit } from 'memoizeit-develop'
+import { memoizeit } from 'memoizeit-main'
 
 // fibonacci function to be memoized
 function fibonacciWithMemoizeIt (n) {

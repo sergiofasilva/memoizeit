@@ -1,4 +1,4 @@
-import { memoizeit } from 'memoizeit-develop'
+import { memoizeit } from 'memoizeit-main'
 
 // function to be memoized
 async function promiseIncrementOne (ms, value) {

@@ -1,4 +1,4 @@
-const memoizeit = require('memoizeit-develop')
+const memoizeit = require('memoizeit-main')
 
 // function to be memoized
 function getSumBetween (start, end) {
