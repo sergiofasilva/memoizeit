@@ -1,2 +1,2 @@
 export = memoizeit;
-declare function memoizeit(func: any): (...args: any[]) => any;
+declare function memoizeit<Args extends unknown[], Out>(func: (...args: Args) => Out): (...args: Args) => Out;
