@@ -10,9 +10,24 @@ describe('memoizeIt', () => {
     }, Error)
   })
 
-  it('Should return an error when the parameter passed in is not a function.', () => {
+  it('Should return an error when the first parameter passed in is not a function.', () => {
     assert.throws(() => {
       memoizeit('string')
+    }, Error)
+  })
+
+  it('Should return an error when the second parameter is passed and is not a positive integer neither undefined or null.', () => {
+    assert.throws(() => {
+      memoizeit(Function, -1)
+    }, Error)
+    assert.throws(() => {
+      memoizeit(Function, 1.5)
+    }, Error)
+    assert.throws(() => {
+      memoizeit(Function, 'not a number')
+    }, Error)
+    assert.throws(() => {
+      memoizeit(Function, NaN)
     }, Error)
   })
 
@@ -41,13 +56,39 @@ describe('memoizeIt', () => {
     const memoSum = memoizeit(sum)
 
     assert.strictEqual(memoSum(1, 2), 3)
-    assert.strictEqual(sum.mock.calls.length, 1) // addt o cache
+    assert.strictEqual(sum.mock.calls.length, 1) // add to cache -> increment
     assert.strictEqual(memoSum(2, 3), 5)
-    assert.strictEqual(sum.mock.calls.length, 2) // add to cache
+    assert.strictEqual(sum.mock.calls.length, 2) // add to cache  -> increment
     assert.strictEqual(memoSum(1, 2), 3)
-    assert.strictEqual(sum.mock.calls.length, 2) // get from cache
+    assert.strictEqual(sum.mock.calls.length, 2) // get from cache -> not increment
     assert.strictEqual(memoSum(2, 3), 5)
-    assert.strictEqual(sum.mock.calls.length, 2) // get from cache
+    assert.strictEqual(sum.mock.calls.length, 2) // get from cache -> not increment
+  })
+
+  it('Should call deleteExpiredCacheKeys.', async (ctx) => {
+    const sum = ctx.mock.fn((a, b) => {
+      return a + b
+    })
+
+    const now = Date.now()
+    const setTime = 2000
+
+    const memoSum = memoizeit(sum, 3) // with ttl 3 seconds
+
+    assert.strictEqual(memoSum(1, 2), 3)
+    assert.strictEqual(sum.mock.calls.length, 1) // add to cache -> increment
+
+    ctx.mock.timers.enable({ apis: ['Date'] })
+
+    ctx.mock.timers.setTime(now + setTime)
+    // deleteExpiredCacheKeys is called but not delete the value of "memoSum(1, 2)" from cache. Expire time not reached yet.
+    assert.strictEqual(memoSum(1, 2), 3)
+    assert.strictEqual(sum.mock.calls.length, 1) // get from cache -> not increment
+
+    ctx.mock.timers.setTime(now + setTime + setTime)
+    // deleteExpiredCacheKeys is called and delete the value of "memoSum(1, 2)" from cache. Expire time reached.
+    assert.strictEqual(memoSum(1, 2), 3)
+    assert.strictEqual(sum.mock.calls.length, 2) // add to cache -> increment
   })
 
   it('Should handle different argument types correctly.', () => {
