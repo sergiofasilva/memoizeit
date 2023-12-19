@@ -16,18 +16,33 @@ describe('memoizeIt', () => {
     }, Error)
   })
 
-  it('Should return an error when the second parameter is passed and is not a positive integer neither undefined or null.', () => {
+  it('Should return an error when the cache is passed at options and is not a Map neither undefined or null.', () => {
     assert.throws(() => {
-      memoizeit(Function, -1)
+      memoizeit(Function, { cache: 4 })
     }, Error)
     assert.throws(() => {
-      memoizeit(Function, 1.5)
+      memoizeit(Function, { cache: 'string' })
     }, Error)
     assert.throws(() => {
-      memoizeit(Function, 'not a number')
+      memoizeit(Function, { cache: {} })
     }, Error)
     assert.throws(() => {
-      memoizeit(Function, NaN)
+      memoizeit(Function, { cache: new Set() })
+    }, Error)
+  })
+
+  it('Should return an error when the ttl is passed at options and is not a positive integer neither undefined or null.', () => {
+    assert.throws(() => {
+      memoizeit(Function, { ttl: -1 })
+    }, Error)
+    assert.throws(() => {
+      memoizeit(Function, { ttl: 1.5 })
+    }, Error)
+    assert.throws(() => {
+      memoizeit(Function, { ttl: 'not a number' })
+    }, Error)
+    assert.throws(() => {
+      memoizeit(Function, { ttl: NaN })
     }, Error)
   })
 
@@ -65,7 +80,7 @@ describe('memoizeIt', () => {
     assert.strictEqual(sum.mock.calls.length, 2) // get from cache -> not increment
   })
 
-  it('Should call deleteExpiredCacheKeys.', async (ctx) => {
+  it('Should delete expired key and call again the memoixed function.', async (ctx) => {
     const sum = ctx.mock.fn((a, b) => {
       return a + b
     })
@@ -73,7 +88,7 @@ describe('memoizeIt', () => {
     const now = Date.now()
     const setTime = 2000
 
-    const memoSum = memoizeit(sum, 3) // with ttl 3 seconds
+    const memoSum = memoizeit(sum, { ttl: 3 }) // with ttl 3 seconds
 
     assert.strictEqual(memoSum(1, 2), 3)
     assert.strictEqual(sum.mock.calls.length, 1) // add to cache -> increment
@@ -81,14 +96,35 @@ describe('memoizeIt', () => {
     ctx.mock.timers.enable({ apis: ['Date'] })
 
     ctx.mock.timers.setTime(now + setTime)
-    // deleteExpiredCacheKeys is called but not delete the value of "memoSum(1, 2)" from cache. Expire time not reached yet.
+    // The value of "memoSum(1, 2)" is not deleted from cache. Expire time not reached yet.
     assert.strictEqual(memoSum(1, 2), 3)
     assert.strictEqual(sum.mock.calls.length, 1) // get from cache -> not increment
 
     ctx.mock.timers.setTime(now + setTime + setTime)
-    // deleteExpiredCacheKeys is called and delete the value of "memoSum(1, 2)" from cache. Expire time reached.
+    // The value of "memoSum(1, 2)" is deleted from cache. Expire time reached.
     assert.strictEqual(memoSum(1, 2), 3)
     assert.strictEqual(sum.mock.calls.length, 2) // add to cache -> increment
+  })
+
+  it('Should call deleteExpiredCacheKeys and delete expired keys.', async (ctx) => {
+    const sum = ctx.mock.fn((a, b) => {
+      return a + b
+    })
+
+    const cache = new Map()
+    const memoSum = memoizeit(sum, { cache, ttl: 1 }) // with ttl 1 second
+
+    assert.strictEqual(memoSum(1, 2), 3)
+    assert.strictEqual(memoSum(1, 3), 4)
+    assert.strictEqual(sum.mock.calls.length, 2)
+
+    cache.get('[1,2]').expireAt = 0
+    cache.get('[1,3]').expireAt = 0
+
+    assert.strictEqual(memoSum(1, 4), 5) // add [1,4] to cache, delete expired [1,2] and [1,3] from cache
+    assert.strictEqual(sum.mock.calls.length, 3)
+    await new Promise(resolve => setTimeout(resolve, 100))
+    assert.strictEqual(cache.size, 1)
   })
 
   it('Should handle different argument types correctly.', () => {

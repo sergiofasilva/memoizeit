@@ -1,15 +1,24 @@
 'use strict'
 
-function memoizeit (func, ttl) {
-  const cache = new Map()
+function memoizeit (func, options = {}) {
   if (typeof func !== 'function') {
-    throw new Error('The argument of momoizeIt must be a function.')
+    throw new Error('The first argument of memoizeIt must be a function.')
   }
-  const ttlExists = ttl !== undefined && ttl !== null
+
+  const isCacheOptionProvided = options?.cache !== undefined && options?.cache !== null
+  const isCacheOptionValid = options?.cache instanceof Map
+  if (isCacheOptionProvided && !isCacheOptionValid) {
+    throw new Error('When provided, the cache option must be a Map object.')
+  }
+
+  const ttl = options?.ttl
+  const isTtlProvided = ttl !== undefined && ttl !== null
   const isTtlPositiveInteger = Number.isInteger(ttl) && ttl > 0
-  if (ttlExists && !isTtlPositiveInteger) {
-    throw new Error('The ttl argument must be a positive integer.')
+  if (isTtlProvided && !isTtlPositiveInteger) {
+    throw new Error('When provided, the ttl option must be a positive integer.')
   }
+
+  const cache = options?.cache instanceof Map ? options.cache : new Map()
 
   const memoized = (...args) => {
     const key = JSON.stringify(args)
@@ -50,6 +59,7 @@ function deleteExpiredCacheKeys (cache) {
   const now = new Date().getTime()
   for (const [key, value] of cache.entries()) {
     const isExpired = value.expireAt !== -1 && value.expireAt < now
+
     if (!isExpired) {
       break
     }
