@@ -119,4 +119,22 @@ describe('memoizeIt', () => {
     assert.deepStrictEqual(resultArray1, resultArray2)
     assert.deepStrictEqual(resultArray1, resultArray3)
   })
+
+  it('Should throw an error if the limit parameter is not a natural number', () => {
+    function sum (a, b) {
+      return a + b
+    }
+
+    assert.throws(() => {
+      memoizeit(sum, -1)
+    }, Error)
+
+    assert.throws(() => {
+      memoizeit(sum, 'string')
+    }, Error)
+
+    assert.throws(() => {
+      memoizeit(sum, 1.5)
+    }, Error)
+  })
 })

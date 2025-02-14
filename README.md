@@ -87,6 +87,18 @@ console.log(result1) // prints 3
 const result2 = memoSum(1, 2) // second call (cache usage)
 console.log(result2) // prints 3
 ```
+&nbsp;
+
+## Limit Parameter
+You can limit the number of cached results by passing a second parameter to the memoizeit function. This is useful to prevent excessive memory usage.
+
+```javascrip`
+const memoSum = memoizeit(sum, 2);
+
+console.log(memoSum(1, 2)); // 3
+console.log(memoSum(2, 3)); // 5
+console.log(memoSum(3, 4)); // 7 (recalculated, as the first result was deleted from cache)
+```
 
 &nbsp;
 
