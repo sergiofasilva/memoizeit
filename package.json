@@ -33,7 +33,7 @@
   "homepage": "https://github.com/sergiofasilva/memoizeit#readme",
   "devDependencies": {
     "memoizeit-main": "github:sergiofasilva/memoizeit#main",
-    "standard": "^17.1.2",
+    "standard": "*",
     "typescript": "^5.7.3"
   },
   "exports": {
