@@ -92,6 +92,9 @@ console.log(result2) // prints 3
 ## Limit Parameter
 You can limit the number of cached results by passing a second parameter to the memoizeit function. This is useful to prevent excessive memory usage.
 
+- The `limit` option should be a natural number (non-negative integer).
+- If the `limit` option is not set, the default value is 0, meaning there is no limit.
+
 ```javascript
 const memoSum = memoizeit(sum, 2);
 
