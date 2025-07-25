@@ -1,6 +1,6 @@
 {
   "name": "memoizeit",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Module for functions memoization.",
   "main": "./index.js",
   "types": "./types/index.d.ts",
