@@ -44,10 +44,3 @@ function memoizeit<T extends (...args: any[]) => any>(
 
 export { memoizeit };
 export default memoizeit;
-
-// Compatibility CommonJS and ES Modules:
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-  module.exports = memoizeit;
-  module.exports.memoizeit = memoizeit; //named export
-}
-

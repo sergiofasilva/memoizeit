@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.memoizeit = memoizeit;
 function memoizeit(func, limit = 0) {
     const cache = new Map();
     if (typeof func !== 'function') {
@@ -32,10 +35,4 @@ function memoizeit(func, limit = 0) {
     };
     return memoized;
 }
-export { memoizeit };
-export default memoizeit;
-// Compatibility CommonJS and ES Modules:
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = memoizeit;
-    module.exports.memoizeit = memoizeit; //named export
-}
+exports.default = memoizeit;

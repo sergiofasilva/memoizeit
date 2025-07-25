@@ -2,7 +2,7 @@
   "name": "memoizeit",
   "version": "5.0.5",
   "description": "Module for functions memoization.",
-  "main": "./dist/index.js",
+  "main": "./cjs.js",
   "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
@@ -39,7 +39,7 @@
   },
   "exports": {
     "import": "./dist/index.js",
-    "require": "./dist/index.js",
+    "require": "./cjs.js",
     "default": "./dist/index.js"
   }
 }
