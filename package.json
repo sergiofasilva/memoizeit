@@ -40,6 +40,7 @@
   "exports": {
     "import": "./index.mjs",
     "require": "./index.js",
+    "types": "./types/index.d.ts",
     "default": "./index.js"
   }
 }
