@@ -43,10 +43,11 @@ function memoizeit<T extends (...args: any[]) => any>(
 }
 
 export { memoizeit };
-module.exports = memoizeit; // For CommonJS compatibility
-// Ensure the correct path or file exists
-export type { MemoizeIt } from './types.ts'; // Removed `.js` to align with TypeScript module resolution
-export * from './types';
-export { memoizeit as memoizeIt }; // For backward compatibility
-export { memoizeit as memoize } from './index'; // For backward compatibility
-export default memoizeit; // Single default export
+export default memoizeit;
+
+// Para compatibilidade CommonJS e ES Modules:
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = memoizeit;
+  module.exports.default = memoizeit;
+}
+

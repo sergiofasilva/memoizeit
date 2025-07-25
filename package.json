@@ -4,7 +4,7 @@
   "description": "Module for functions memoization.",
   "main": "./index.js",
   "types": "./types/index.d.ts",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "test": "node --test --experimental-test-coverage",
     "push": "npm version patch && git push --tags && npm publish",
