@@ -1,2 +1,9 @@
+declare function memoizeit<Args extends unknown[], Out>(
+  func: (...args: Args) => Out,
+  limit?: number
+): (...args: Args) => Out;
+
 export = memoizeit;
-declare function memoizeit<Args extends unknown[], Out>(func: (...args: Args) => Out): (...args: Args) => Out;
+export as namespace memoizeit;
+export default memoizeit;
+
