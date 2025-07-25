@@ -49,6 +49,6 @@ export default memoizeit;
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = memoizeit;
   module.exports.default = memoizeit;
-  module.exports.memoizeit = memoizeit; //named export
+  module.exports.memoizeit = memoizeit; //named export1
 }
 

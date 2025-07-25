@@ -2,8 +2,8 @@
   "name": "memoizeit",
   "version": "4.0.4",
   "description": "Module for functions memoization.",
-  "main": "./index.js",
-  "types": "./types/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
     "test": "node --test --experimental-test-coverage",
