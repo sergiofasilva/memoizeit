@@ -1,3 +1,3 @@
-const { memoizeit } = await import('./dist/index.js')
+const { memoizeit } = import('./dist/index.js')
 module.exports = memoizeit
 module.exports.memoizeit = memoizeit
