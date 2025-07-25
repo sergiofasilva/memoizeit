@@ -48,7 +48,6 @@ export default memoizeit;
 // Compatibility CommonJS and ES Modules:
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = memoizeit;
-  module.exports.default = memoizeit;
-  module.exports.memoizeit = memoizeit; //named export1
+  module.exports.memoizeit = memoizeit; //named export
 }
 
