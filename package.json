@@ -38,8 +38,8 @@
     "typescript": "^5.8.3"
   },
   "exports": {
-    "import": "./index.mjs",
-    "require": "./index.js",
-    "default": "./index.js"
+    "import": "./dist/index.js",
+    "require": "./dist/index.js",
+    "default": "./dist/index.js"
   }
 }
