@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.memoizeit = memoizeit;
 function memoizeit(func, limit = 0) {
     const cache = new Map();
     if (typeof func !== 'function') {
@@ -35,4 +32,5 @@ function memoizeit(func, limit = 0) {
     };
     return memoized;
 }
-exports.default = memoizeit;
+export { memoizeit };
+export default memoizeit;
