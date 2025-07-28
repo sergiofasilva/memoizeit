@@ -1,7 +1,7 @@
-function memoizeit<T extends (...args: any[]) => any>(
-  func: T,
+function memoizeit<Args extends unknown[], Out>(
+  func: (...args: Args) => Out,
   limit: number = 0
-): T {
+): (...args: Args) => Out {
   const cache = new Map<string, any>();
   if (typeof func !== 'function') {
     throw new Error('The argument of memoizeIt must be a function.');
@@ -11,7 +11,7 @@ function memoizeit<T extends (...args: any[]) => any>(
     throw new Error('The limit argument must be a natural number.');
   }
 
-  const memoized = (...args: Parameters<T>): ReturnType<T> => {
+  const memoized = (...args: Parameters<typeof func>): ReturnType<typeof func> => {
     const key = JSON.stringify(args);
     if (limit > 0 && cache.size >= limit) {
       const firstKey = cache.keys().next().value;
@@ -30,16 +30,16 @@ function memoizeit<T extends (...args: any[]) => any>(
       typeof (funcResult as any).then === 'function';
 
     if (isPromise) {
-      return (funcResult as Promise<any>).then((promiseResult: any) => {
+      return (funcResult as unknown as Promise<any>).then((promiseResult: any) => {
         cache.set(key, promiseResult);
         return promiseResult;
-      }) as ReturnType<T>;
+      }) as ReturnType<typeof func>;
     }
 
     cache.set(key, funcResult);
     return funcResult;
   };
-  return memoized as T;
+  return memoized as (...args: Args) => Out;
 }
 
 export { memoizeit };
